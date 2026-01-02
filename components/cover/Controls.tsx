@@ -242,6 +242,20 @@ export default function Controls() {
                <Label>描边颜色</Label>
                <ColorPicker color={store.text.strokeColor} onChange={(c) => store.updateText({ strokeColor: c })} />
             </div>
+
+            <div className="space-y-2">
+               <div className="flex justify-between items-center">
+                   <Label>旋转 ({store.text.rotation}°)</Label>
+                   <ResetButton onClick={() => store.updateText({ rotation: 0 })} />
+               </div>
+               <Slider 
+                 value={[store.text.rotation]} 
+                 min={0} 
+                 max={360} 
+                 step={1} 
+                 onValueChange={(v) => store.updateText({ rotation: v[0] })} 
+               />
+            </div>
           </section>
 
           <Separator />

@@ -147,9 +147,6 @@ export default function Canvas() {
         <div 
             id="canvas-export-target" 
             className="w-full h-full relative overflow-hidden flex flex-col items-center justify-center"
-            style={{
-                boxShadow: background.shadow ? `0 ${background.shadowOffsetY}px ${background.shadowBlur}px ${background.shadowColor}` : 'none',
-            }}
         >
             {/* Background Layer */}
             <div
@@ -172,6 +169,16 @@ export default function Canvas() {
                     />
                 )}
             </div>
+
+            {/* Inner Shadow Layer */}
+            {background.shadow && (
+                <div 
+                    className="absolute inset-0 pointer-events-none z-0"
+                    style={{
+                        boxShadow: `inset 0 ${background.shadowOffsetY}px ${background.shadowBlur}px ${background.shadowColor}`,
+                    }}
+                />
+            )}
 
             {/* Content Layer */}
             <div className="z-10 pointer-events-none">
